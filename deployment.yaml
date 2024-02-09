@@ -1,0 +1,38 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nestjs-docker-kuber
+# spec:
+#   selector:
+#     matchLabels:
+#       app: nestjs-docker-kuber
+#     replicas: 2
+#     template: 
+#       metadata:
+#         labels:
+#           app: nestjs-docker-kuber
+#       spec: 
+#         containers:
+#           - name: nestjs-docker-kuber
+#             image: 04072001/nestjs-docker-kuber
+#             ports: 
+#               - containerPort: 3000
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-docker-kuber
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nestjs-docker-kuber
+  template:
+    metadata:
+      labels:
+        app: nestjs-docker-kuber
+    spec:
+      containers:
+      - name: nestjs-docker-kuber
+        image: 04072001/nestjs-docker-kuber
+        ports:
+        - containerPort: 3000
